@@ -1,0 +1,35 @@
+{% extends 'post/base.html' %} {% block body %}
+<div class="bg-gray-100 h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded shadow-md w-96">
+    <!-- User Profile Picture -->
+    <div class="mb-4">
+      <img
+        src="path/to/profilepics.jpg"
+        alt="Profile Picture"
+        class="w-24 h-24 rounded-full mx-auto"
+      />
+    </div>
+
+    <!-- User Information -->
+    <div class="text-center">
+      <h2 class="text-xl font-semibold">John Doe</h2>
+      <p class="text-gray-500">@johndoe</p>
+    </div>
+
+    <!-- User Bio -->
+    <div class="mt-4">
+      <p class="text-gray-700">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+        odio. Praesent libero.
+      </p>
+    </div>
+
+    <!-- Edit Profile Button -->
+    <div class="mt-6 text-center">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded-full">
+        Edit Profile
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}

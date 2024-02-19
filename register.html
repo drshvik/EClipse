@@ -1,0 +1,25 @@
+{% extends 'post/base.html' %} {% block body %}
+
+<div class="bg-gray-100 h-screen flex items-center justify-center">
+  <div class="mx-auto p-10">
+    <form method="POST" action="{% url 'register' %}">
+      {% csrf_token %} {% for field in form %}
+      <div class="mb-4">
+        <br />
+        <label for="username" class="block text-sm font-medium text-gray-600"
+          >{{ field.name }}</label
+        >
+        {{ field }}
+      </div>
+      {% endfor %}
+      <br />
+      <button
+        type="submit"
+        class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

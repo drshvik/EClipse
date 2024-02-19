@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Eclipse</title>
+  </head>
+  <body class="bg-gray-100">
+    <nav class="bg-purple-500 p-4 text-yellow">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+          <span class="text-xl font-semibold">Eclipse</span>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a
+            href="{% url 'addpost' %}"
+            id="postButton"
+            class="bg-white text-blue-500 px-4 py-2 rounded-full"
+          >
+            Post
+          </a>
+          {% if user.is_authenticated %}
+          <div class="relative inline-block text-left">
+            <div>
+              <button id="profileButton" class="focus:outline-none">
+                <img
+                  src="{{ user.profile.image.url }}"
+                  alt="User Profile"
+                  class="w-8 h-8 ml-5 rounded-full"
+                />
+              </button>
+            </div>
+            <div
+              id="profileDropdown"
+              class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg"
+            >
+              <a
+                href="{% url 'userposts' %}"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >My Posts</a
+              >
+              <a
+                href="{% url 'logout' %}"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Logout</a
+              >
+            </div>
+          </div>
+          {% else %}
+          <a href="{% url 'login' %}" class="text-white">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    {% block body %} {% endblock %}
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var profileButton = document.getElementById("profileButton");
+        var profileDropdown = document.getElementById("profileDropdown");
+
+        profileButton.addEventListener("click", function () {
+          profileDropdown.classList.toggle("hidden");
+        });
+
+        document.addEventListener("click", function (event) {
+          if (
+            !profileButton.contains(event.target) &&
+            !profileDropdown.contains(event.target)
+          ) {
+            profileDropdown.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<!-- Your content goes here -->
