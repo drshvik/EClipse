@@ -1,0 +1,36 @@
+{% extends 'post/base.html' %} {% block body %}
+<div
+  class="fixed top-0 right-0 h-full w-3/5 py-5 bg-gray-100 overflow-auto mt-20"
+>
+  <div class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+      <div class="mb-4">
+        <img
+          src="{{user.profile.image.url}}"
+          alt="Profile Picture"
+          class="w-24 h-24 rounded-full mx-auto"
+        />
+      </div>
+
+      <div class="text-center">
+        <h2 class="text-xl font-semibold">Username: {{user.username}}</h2>
+        <p class="text-gray-500">First Name: {{user.first_name}}</p>
+        <p class="text-gray-500">Last Name: {{user.last_name}}</p>
+      </div>
+
+      <div class="mt-4">
+        <p class="text-gray-700">Bio: {{user.bio}}</p>
+      </div>
+
+      <div class="mt-6 text-center">
+        <form action="{% url 'editprofile' %}" method="GET">
+          {% csrf_token %}
+          <button class="bg-blue-500 text-white px-4 py-2 rounded-full">
+            Edit Profile
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'post/base.html' %} {% block body %}
+<div
+  class="fixed top-0 right-0 h-full w-3/5 py-5 bg-gray-100 overflow-auto mt-20"
+>
+  <div class="container mx-auto mt-8">
+    <!-- Sample Blog Post 1 -->
+    <h1 class="text-3xl font-semibold mb-4">Your Posts</h1>
+    {% for post in posts %}
+    <div class="bg-white p-3 mb-4 rounded-lg shadow">
+      <div class="flex items-center space-x-2">
+        <img
+          src="{{ post.user.profile.image.url }}"
+          alt="User 1"
+          class="w-8 h-8 rounded-full"
+        />
+        <span class="text-sm font-semibold">{{ post.user.username }}</span>
+      </div>
+      <img
+        src="{{ post.image.url }}"
+        alt="Blog Post 1"
+        class="mt-2 w-full rounded-lg"
+      />
+      <a
+        href="{% url 'post' post.id %}"
+        class="text-xl font-semibold mt-2 block"
+      >
+        {{ post.title }}
+      </a>
+      <h2 class="text-sm mt-1">{{ post.description }}</h2>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+  {% endblock %}
+</div>

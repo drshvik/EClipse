@@ -1,0 +1,28 @@
+{% extends 'post/base.html' %} {% block body %}
+<div
+  class="fixed top-0 right-0 h-full w-3/5 py-5 bg-gray-100 overflow-auto mt-20"
+>
+  <div class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+      <div class="mb-4">
+        <img
+          src="{{post.user.profile.image.url}}"
+          alt="Profile Picture"
+          class="w-24 h-24 rounded-full mx-auto"
+        />
+      </div>
+
+      <div class="text-center">
+        <h2 class="text-xl font-semibold">
+          {{post.user.first_name}} {{post.user.last_name}}
+        </h2>
+        <p class="text-gray-500">{{post.user.username}}</p>
+      </div>
+
+      <div class="mt-4">
+        <p class="text-gray-700">{{post.user.bio}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
